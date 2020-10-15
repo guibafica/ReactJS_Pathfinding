@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
 
-import './PathfindingVisualizer.css';
+import './Pathfinding.css';
 
-const START_NODE_ROW = 10;
-const START_NODE_COL = 15;
+const START_NODE_ROW = 0;
+const START_NODE_COL = 0;
 const FINISH_NODE_ROW = 10;
 const FINISH_NODE_COL = 35;
 
-export default class PathfindingVisualizer extends Component {
+export default class Pathfinding extends Component {
   constructor() {
     super();
     this.state = {
@@ -78,9 +78,46 @@ export default class PathfindingVisualizer extends Component {
 
     return (
       <>
-        <button onClick={() => this.visualizeDijkstra()}>
-          Iniciar
-        </button>
+      <div
+        style={{ 
+          height: 60,
+          background: '#1A1C1D',
+        }}
+      >
+        <img 
+          style={{ 
+            height: 30,
+            width: 30,
+            marginRight: 50,
+            marginTop: 10
+          }}
+          src="https://www.multiimagem.com.br/wp-content/uploads/2019/10/Como-fazer-o-seu-posto-aparecer-no-Google-Maps.png" 
+          alt="Icone mapa"
+        />
+        <span
+          style={{ 
+            fontWeight: 800,
+            fontSize: 24,
+            color: '#FFFFFF',
+            marginRight: '50%'
+          }}
+        >Pathfinding com dijkstra</span>
+          <button 
+            style={{ 
+              height: 35,
+              width: 120,
+              fontWeight: 800,
+              fontSize: 16,
+              border: 0,
+              borderRadius: 8,
+              color: '#FFFFFF',
+              background: '#404491',
+            }}
+            onClick={() => this.visualizeDijkstra()}
+          >
+            Iniciar
+          </button>
+        </div>
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
