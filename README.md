@@ -20,6 +20,7 @@ Não tem como desenvolver um Pathfinding sem antes saber como funciona. Neste mo
 ## 2º Passo - Criar projeto em ReactJS:
 Como disse antes, este projeto em construido em JS "Onde ficará toda a funcionalidade" + ReactJS "Que será a interface gráfica". Então criei um projeto base com `yarn create-react-app pathfinding`.
 Por falta de tempo, não me atentei em limpar o projeto e realizar demais configurações base que estou acostumado, e também não me atentei muito no visual da aplicação.
-
+ 
+ 09:18
 
 Made with 💜 by [Guilherme Bafica](https://github.com/guibafica) 👋 

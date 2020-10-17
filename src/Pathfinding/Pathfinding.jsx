@@ -77,7 +77,9 @@ export default class Pathfinding extends Component {
     const {grid, mouseIsPressed} = this.state;
 
     return (
-      <>
+      <div
+        style={{ background: '#0E0F10' }}
+      >
       <div
         style={{ 
           height: 60,
@@ -110,14 +112,22 @@ export default class Pathfinding extends Component {
               fontSize: 16,
               border: 0,
               borderRadius: 8,
-              color: '#FFFFFF',
+              color: '#E8E6E3',
               background: '#404491',
             }}
             onClick={() => this.visualizeDijkstra()}
           >
             Iniciar
           </button>
+          
         </div>
+        <span
+            style={{ 
+              marginRight: '57%',
+              color: '#E8E6E3',
+              fontWeight: 800,
+            }}
+          >Guilherme Bafica - 171030428</span>
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
@@ -144,7 +154,7 @@ export default class Pathfinding extends Component {
             );
           })}
         </div>
-      </>
+      </div>
     );
   }
 }
