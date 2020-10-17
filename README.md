@@ -3,7 +3,7 @@ Vou listar aqui o caminho que percorri para desenvolver esta aplicação, mas an
 
 > Esta aplicação é desenvolvida em REACTJS, então é necessário sua máquina estar configurada para rodar esse tipo de aplicação. Além das dependências GIT.
 
-OU, simplesmente acesse este [link]() para acessar a aplicação.
+OU, simplesmente acesse este [link](http://54.234.174.216:3000/) para acessar a aplicação.
 
 ## Executar a aplicação:
  - Clone a aplicação com `git clone`;
@@ -20,7 +20,6 @@ Não tem como desenvolver um Pathfinding sem antes saber como funciona. Neste mo
 ## 2º Passo - Criar projeto em ReactJS:
 Como disse antes, este projeto em construido em JS "Onde ficará toda a funcionalidade" + ReactJS "Que será a interface gráfica". Então criei um projeto base com `yarn create-react-app pathfinding`.
 Por falta de tempo, não me atentei em limpar o projeto e realizar demais configurações base que estou acostumado, e também não me atentei muito no visual da aplicação.
- 
- 09:18
+
 
 Made with 💜 by [Guilherme Bafica](https://github.com/guibafica) 👋 
