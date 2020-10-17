@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
 
@@ -30,6 +31,7 @@ export default class Pathfinding extends Component {
 
   handleMouseEnter(row, col) {
     if (!this.state.mouseIsPressed) return;
+
     const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
     this.setState({grid: newGrid});
   }
@@ -44,10 +46,13 @@ export default class Pathfinding extends Component {
         setTimeout(() => {
           this.animateShortestPath(nodesInShortestPathOrder);
         }, 10 * i);
+
         return;
       }
+
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
+
         document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-visited';
       }, 10 * i);
@@ -58,6 +63,7 @@ export default class Pathfinding extends Component {
     for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
       setTimeout(() => {
         const node = nodesInShortestPathOrder[i];
+
         document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-shortest-path';
       }, 50 * i);
@@ -66,8 +72,10 @@ export default class Pathfinding extends Component {
 
   visualizeDijkstra() {
     const {grid} = this.state;
+
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+
     const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
@@ -77,9 +85,7 @@ export default class Pathfinding extends Component {
     const {grid, mouseIsPressed} = this.state;
 
     return (
-      <div
-        style={{ background: '#0E0F10' }}
-      >
+      <div style={{ background: '#0E0F10' }} >
       <div
         style={{ 
           height: 60,
@@ -134,6 +140,7 @@ export default class Pathfinding extends Component {
               <div key={rowIdx}>
                 {row.map((node, nodeIdx) => {
                   const {row, col, isFinish, isStart, isWall} = node;
+
                   return (
                     <Node
                       key={nodeIdx}
@@ -161,13 +168,17 @@ export default class Pathfinding extends Component {
 
 const getInitialGrid = () => {
   const grid = [];
+
   for (let row = 0; row < 20; row++) {
     const currentRow = [];
+
     for (let col = 0; col < 50; col++) {
       currentRow.push(createNode(col, row));
     }
+
     grid.push(currentRow);
   }
+
   return grid;
 };
 
@@ -187,10 +198,13 @@ const createNode = (col, row) => {
 const getNewGridWithWallToggled = (grid, row, col) => {
   const newGrid = grid.slice();
   const node = newGrid[row][col];
+
   const newNode = {
     ...node,
     isWall: !node.isWall,
   };
+
   newGrid[row][col] = newNode;
+  
   return newGrid;
 };
