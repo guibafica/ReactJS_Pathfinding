@@ -15,7 +15,7 @@ export default class Node extends Component {
       row,
     } = this.props;
 
-    const extraClassName = isFinish
+    const extraClassName = isFinish // Estilização
       ? 'node-finish'
       : isStart
       ? 'node-start'

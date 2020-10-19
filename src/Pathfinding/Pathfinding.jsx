@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
 
 import './Pathfinding.css';
 
-const START_NODE_ROW = 0;
-const START_NODE_COL = 0;
-const FINISH_NODE_ROW = 10;
-const FINISH_NODE_COL = 35;
+const START_ROW = 6;
+const START_COL = 6;
+const FINISH_ROW = 15;
+const FINISH_COL = 45;
 
 export default class Pathfinding extends Component {
   constructor() {
@@ -20,21 +20,21 @@ export default class Pathfinding extends Component {
   }
 
   componentDidMount() {
-    const grid = getInitialGrid();
+    const grid = initialGrid();
     this.setState({grid});
   }
 
   handleMouseDown(row, col) {
     const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
-    this.setState({grid: newGrid, mouseIsPressed: true});
+    this.setState({ grid: newGrid, mouseIsPressed: true });
   }
 
   handleMouseEnter(row, col) {
     if (!this.state.mouseIsPressed) return;
 
     const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
-    this.setState({grid: newGrid});
-  }
+    this.setState({ grid: newGrid });
+  }   
 
   handleMouseUp() {
     this.setState({mouseIsPressed: false});
@@ -73,8 +73,8 @@ export default class Pathfinding extends Component {
   visualizeDijkstra() {
     const {grid} = this.state;
 
-    const startNode = grid[START_NODE_ROW][START_NODE_COL];
-    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    const startNode = grid[START_ROW][START_COL];
+    const finishNode = grid[FINISH_ROW][FINISH_COL];
 
     const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
@@ -143,7 +143,7 @@ export default class Pathfinding extends Component {
 
                   return (
                     <Node
-                      key={nodeIdx}
+                      key={nodeIdx} 
                       col={col}
                       isFinish={isFinish}
                       isStart={isStart}
@@ -166,7 +166,7 @@ export default class Pathfinding extends Component {
   }
 }
 
-const getInitialGrid = () => {
+const initialGrid = () => {
   const grid = [];
 
   for (let row = 0; row < 20; row++) {
@@ -186,11 +186,11 @@ const createNode = (col, row) => {
   return {
     col,
     row,
-    isStart: row === START_NODE_ROW && col === START_NODE_COL,
-    isFinish: row === FINISH_NODE_ROW && col === FINISH_NODE_COL,
+    isStart: row === START_ROW && col === START_COL,
+    isFinish: row === FINISH_ROW && col === FINISH_COL,
     distance: Infinity,
-    isVisited: false,
-    isWall: false,
+    isVisited: false, 
+    isWall: false, 
     previousNode: null,
   };
 };

@@ -1,7 +1,7 @@
 export function dijkstra(grid, startNode, finishNode) {
   const visitedNodesInOrder = [];
-  startNode.distance = 0;
   const unvisitedNodes = getAllNodes(grid);
+  startNode.distance = 0;
 
   while (!!unvisitedNodes.length) {
     sortNodesByDistance(unvisitedNodes);
@@ -35,7 +35,7 @@ function updateUnvisitedNeighbors(node, grid) {
 
 function getUnvisitedNeighbors(node, grid) {
   const neighbors = [];
-  const {col, row} = node;
+  const { col, row } = node;
 
   if (row > 0) neighbors.push(grid[row - 1][col]);
 
@@ -68,6 +68,8 @@ export function getNodesInShortestPathOrder(finishNode) {
     nodesInShortestPathOrder.unshift(currentNode);
     currentNode = currentNode.previousNode;
   }
+
+  console.log("Custo do caminho: ", nodesInShortestPathOrder.length)
   
   return nodesInShortestPathOrder;
 }
